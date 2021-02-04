@@ -3,5 +3,7 @@ const path = require("path");
 
 const caminho = path.join(__dirname, "legendas");
 
-const arquivos = fn.lerDiretorio(caminho);
-console.log(arquivos);
+fn.lerDiretorio(caminho)
+    .then((arquivos) => (console.log(arquivos)))
+    .catch((erro) => (console.log("Erro na leitura do diretório")))
+;
