@@ -1,5 +1,6 @@
 module.exports = {
-    lerDiretorio
+    lerDiretorio,
+    filtrarExtencao
 };
 
 const fs = require("fs");
@@ -15,3 +16,7 @@ function lerDiretorio(caminho) {
         };
     });
 };
+
+function filtrarExtencao(array, extencao) {
+    return array.filter((arquivo) => (arquivo.endsWith(extencao)));
+}
