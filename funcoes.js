@@ -1,6 +1,8 @@
 module.exports = {
     lerDiretorio,
-    filtrarExtencao
+    filtrarExtencao,
+    lerArquivo,
+    lerArquivos
 };
 
 const fs = require("fs");
@@ -20,3 +22,17 @@ function lerDiretorio(caminho) {
 function filtrarExtencao(array, extencao) {
     return array.filter((arquivo) => (arquivo.endsWith(extencao)));
 }
+
+function lerArquivo(caminho) {
+    return new Promise((resolve, reject) => {
+        try {
+            resolve(fs.readFileSync(caminho, {encoding: "utf-8"}).toString());
+        } catch(e) {
+            reject(e);
+        };
+    });
+};
+
+function lerArquivos(caminhos) {
+    return Promise.all(caminhos.map(caminho => lerArquivo(caminho)));
+};
