@@ -2,7 +2,8 @@ module.exports = {
     lerDiretorio,
     filtrarExtencao,
     lerArquivo,
-    lerArquivos
+    lerArquivos,
+    removerVazios
 };
 
 const fs = require("fs");
@@ -35,4 +36,8 @@ function lerArquivo(caminho) {
 
 function lerArquivos(caminhos) {
     return Promise.all(caminhos.map(caminho => lerArquivo(caminho)));
+};
+
+function removerVazios(array) {
+    return array.filter((elemento) => elemento.trim());
 };
