@@ -10,5 +10,6 @@ fn.lerDiretorio(caminho)
     .then((conteudoTratado) => (conteudoTratado.split("\n")))
     .then((linha) => (fn.removerVazios(linha)))
     .then((linha) => (fn.removerPadroes(linha, "-->")))
+    .then((linha) => (fn.removerNumeracao(linha)))
     .then(console.log)
 ;

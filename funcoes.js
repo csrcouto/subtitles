@@ -4,7 +4,8 @@ module.exports = {
     lerArquivo,
     lerArquivos,
     removerVazios,
-    removerPadroes
+    removerPadroes,
+    removerNumeracao
 };
 
 const fs = require("fs");
@@ -45,4 +46,8 @@ function removerVazios(array) {
 
 function removerPadroes(array, padrao) {
     return array.filter((linha) => (!linha.includes(padrao)));
+};
+
+function removerNumeracao(array) {
+    return array.filter((linha) => (!parseInt(linha)));
 };
