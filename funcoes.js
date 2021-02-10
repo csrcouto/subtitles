@@ -3,7 +3,8 @@ module.exports = {
     filtrarExtencao,
     lerArquivo,
     lerArquivos,
-    removerVazios
+    removerVazios,
+    removerPadroes
 };
 
 const fs = require("fs");
@@ -39,5 +40,9 @@ function lerArquivos(caminhos) {
 };
 
 function removerVazios(array) {
-    return array.filter((elemento) => elemento.trim());
+    return array.filter((linha) => linha.trim());
+};
+
+function removerPadroes(array, padrao) {
+    return array.filter((linha) => (!linha.includes(padrao)));
 };
