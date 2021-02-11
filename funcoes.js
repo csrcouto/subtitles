@@ -55,8 +55,7 @@ function removerNumeracao(array) {
 
 function removerSimbolos(array, simbolos) {
     return array.map((linha) => {
-        let novaLinha = linha;
-        simbolos.forEach((simbolo) => novaLinha = novaLinha.replace(simbolo, ""));
-        return novaLinha;
+        simbolos.forEach((simbolo) => linha = linha.replace(simbolo, ""));
+        return linha;
     });
 ;}
