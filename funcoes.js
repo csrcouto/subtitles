@@ -6,7 +6,8 @@ module.exports = {
     removerVazios,
     removerPadroes,
     removerNumeracao,
-    removerSimbolos
+    removerSimbolos,
+    separarPalavras
 };
 
 const fs = require("fs");
@@ -59,3 +60,8 @@ function removerSimbolos(array, simbolos) {
         return linha;
     });
 ;}
+
+function separarPalavras(array) {
+    array = array.join(" ").split(" ");
+    return removerVazios(array);
+};

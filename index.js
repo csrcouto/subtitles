@@ -18,5 +18,6 @@ fn.lerDiretorio(caminho)
     .then((linhas) => (fn.removerPadroes(linhas, "-->")))
     .then((linhas) => (fn.removerNumeracao(linhas)))
     .then((linhas) => (fn.removerSimbolos(linhas, simbolos)))
+    .then((linhas) => (fn.separarPalavras(linhas)))
     .then(console.log)
 ;
