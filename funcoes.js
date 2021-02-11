@@ -5,7 +5,8 @@ module.exports = {
     lerArquivos,
     removerVazios,
     removerPadroes,
-    removerNumeracao
+    removerNumeracao,
+    removerSimbolos
 };
 
 const fs = require("fs");
@@ -51,3 +52,11 @@ function removerPadroes(array, padrao) {
 function removerNumeracao(array) {
     return array.filter((linha) => (!parseInt(linha)));
 };
+
+function removerSimbolos(array, simbolos) {
+    return array.map((linha) => {
+        let novaLinha = linha;
+        simbolos.forEach((simbolo) => novaLinha = novaLinha.replace(simbolo, ""));
+        return novaLinha;
+    });
+;}
