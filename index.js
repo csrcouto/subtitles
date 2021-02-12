@@ -8,18 +8,6 @@ const simbolos = [
     '[', ']', '(', ')', '\'', '\-', '\.', '\'', ',', '\.', '\"', '!'
 ];
 
-function agruparPalavras(array) {
-    return array.reduce((acc, palavra) => {
-        palavra = palavra.toLowerCase();
-        if (acc[palavra]) {
-            acc[palavra] += 1;
-        } else {
-            acc[palavra] = 1;
-        };
-        return acc;
-    }, {});
-}
-
 fn.lerDiretorio(caminho)
     .then((arquivos) => (fn.filtrarExtencao(arquivos, ".srt")))
     .then((arquivosFiltrados) => (fn.lerArquivos(arquivosFiltrados)))
@@ -30,6 +18,7 @@ fn.lerDiretorio(caminho)
     .then((conteudo) => (fn.removerNumeracao(conteudo)))
     .then((conteudo) => (fn.removerSimbolos(conteudo, simbolos)))
     .then((conteudo) => (fn.separarPalavras(conteudo)))
-    .then((conteudo) => (agruparPalavras(conteudo)))
+    .then((conteudo) => (fn.agruparPalavras(conteudo)))
+    .then((conteudo) => (fn.ordenarPalavras(conteudo)))
     .then(console.log)
 ;

@@ -7,7 +7,9 @@ module.exports = {
     removerPadroes,
     removerNumeracao,
     removerSimbolos,
-    separarPalavras
+    separarPalavras,
+    agruparPalavras,
+    ordenarPalavras
 };
 
 const fs = require("fs");
@@ -64,4 +66,28 @@ function removerSimbolos(conteudo, simbolos) {
 function separarPalavras(conteudo) {
     conteudo = conteudo.join(" ").split(" ");
     return removerVazios(conteudo);
+};
+
+function agruparPalavras(array) {
+    return array.reduce((acc, palavra) => {
+        palavra = palavra.toLowerCase();
+        if (acc[palavra]) {
+            acc[palavra] += 1;
+        } else {
+            acc[palavra] = 1;
+        };
+        return acc;
+    }, {});
+};
+
+function ordenarPalavras(conteudo) {
+    const conteudoFinal = new Array();
+    for (let chave in conteudo) {
+        conteudoFinal.push({palavra: `${chave}`, qtd: conteudo[chave]});
+    };
+    return conteudoFinal.sort(function(a, b) {
+        if (a.qtd < b.qtd) return 1;
+        if (a.qtd > b.qtd) return -1;
+        return 0;
+    });
 };
