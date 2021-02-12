@@ -42,26 +42,26 @@ function lerArquivos(caminhos) {
     return Promise.all(caminhos.map(caminho => lerArquivo(caminho)));
 };
 
-function removerVazios(array) {
-    return array.filter((linha) => linha.trim());
+function removerVazios(conteudo) {
+    return conteudo.filter((linha) => linha.trim());
 };
 
-function removerPadroes(array, padrao) {
-    return array.filter((linha) => (!linha.includes(padrao)));
+function removerPadroes(conteudo, padrao) {
+    return conteudo.filter((linha) => (!linha.includes(padrao)));
 };
 
-function removerNumeracao(array) {
-    return array.filter((linha) => (!parseInt(linha)));
+function removerNumeracao(conteudo) {
+    return conteudo.filter((linha) => (!parseInt(linha)));
 };
 
-function removerSimbolos(array, simbolos) {
-    return array.map((linha) => {
+function removerSimbolos(conteudo, simbolos) {
+    return conteudo.map((linha) => {
         simbolos.forEach((simbolo) => linha = linha.replace(simbolo, ""));
         return linha;
     });
 ;}
 
-function separarPalavras(array) {
-    array = array.join(" ").split(" ");
-    return removerVazios(array);
+function separarPalavras(conteudo) {
+    conteudo = conteudo.join(" ").split(" ");
+    return removerVazios(conteudo);
 };
