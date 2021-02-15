@@ -64,18 +64,13 @@ function removerSimbolos(conteudo, simbolos) {
 ;}
 
 function separarPalavras(conteudo) {
-    conteudo = conteudo.join(" ").split(" ");
-    return removerVazios(conteudo);
+    return removerVazios(conteudo.join(" ").split(" "));
 };
 
 function agruparPalavras(array) {
     return array.reduce((acc, palavra) => {
         palavra = palavra.toLowerCase();
-        if (acc[palavra]) {
-            acc[palavra] += 1;
-        } else {
-            acc[palavra] = 1;
-        };
+        (acc[palavra]) ? (acc[palavra] += 1) : (acc[palavra] = 1);
         return acc;
     }, {});
 };
